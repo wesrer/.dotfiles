@@ -44,14 +44,16 @@ Plug 'pest-parser/pest.vim'
 
 " Toggle between Relative and Absolute line numbers
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-set number relativenumber
 
 " color schemes
 Plug 'sainnhe/vim-color-forest-night'
-Plug 'Rigellute/rigel'
 Plug 'morhetz/gruvbox'
-Plug 'rhysd/vim-color-spring-night'
 
+call plug#end()
+
+filetype plugin on
+
+set number relativenumber
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping = ''
 
@@ -67,8 +69,6 @@ set termguicolors
 " enable Forest theme
 syntax enable
 syntax on
-
-filetype plugin on
 
 " Rust autocompletion options
 set hidden
@@ -106,4 +106,3 @@ colorscheme gruvbox
 
 " FIXME: Why do I have to run PlugInstall everytime I open neovim?
 " Run everytime you open vim, and close the window
-PlugInstall | :q
