@@ -8,6 +8,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 
+" Automatically insert brackets in pairs
+Plug 'jiangmiao/auto-pairs'
+
+" Automatically save buffers every time a change is made
+Plug '907th/vim-auto-save'
+
 " Racer - Rust autocompletion tool
 " Rust Tools
 Plug 'racer-rust/vim-racer' 
@@ -49,6 +55,13 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'morhetz/gruvbox'
 
+"Latex
+Plug 'lervag/vimtex'
+
+
+"Ale
+Plug 'dense-analysis/ale'
+
 call plug#end()
 
 filetype plugin on
@@ -63,6 +76,9 @@ nmap ss :SplitjoinSplit<cr>
 " mouse support for terminal vim
 set mouse=a
 
+set autoindent
+set encoding=utf8
+
 " enable 24 bit true color
 set termguicolors
 
@@ -70,19 +86,29 @@ set termguicolors
 syntax enable
 syntax on
 
+" Enable auto save
+let g:auto_save = 1
+
 " Rust autocompletion options
 set hidden
+
+" Ale checking when you leave insert mode
+" let g:ale_lint_on_insert_leave
 
 " Vim-Airline configs
 let g:airline#extensions#tabline#enabled = 1
 
-"let g:racer_cmd = "/home/user/.cargo/bin/racer"
-"let g:racer_experimental_completer = 1
-"let g:racer_insert_paren = 1
-"au FileType rust nmap gd <Plug>(rust-def)
-"au FileType rust nmap gs <Plug>(rust-def-split)
-"au FileType rust nmap gx <Plug>(rust-def-vertical)
-"au FileType rust nmap <leader>gd <Plug>(rust-doc)<Paste>
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+
+augroup Racer
+     autocmd!
+     autocmd! FileType rust nmap gd <Plug>(rust-def)
+     autocmd! FileType rust nmap gs <Plug>(rust-def-split)
+     autocmd! FileType rust nmap gx <Plug>(rust-def-vertical)
+     autocmd! FileType rust nmap <leader>gd <Plug>(rust-doc)<Paste>
+augroup END
 
 " Automatically format Rust code on saving
 let g:rustfmt_autosave = 1
@@ -104,5 +130,11 @@ map <C-n> :NERDTreeToggle<CR>
 let g:airline_theme='forest_night'
 colorscheme gruvbox
 
-" FIXME: Why do I have to run PlugInstall everytime I open neovim?
-" Run everytime you open vim, and close the window
+
+" Vimtex options
+" install neovim-remote, and then enable it, since Vimtex needs to control
+" nvim process from within neovim
+let g:vimtex_compiler_progname = 'nvr'
+
+"enable backward-sync in neovim-remote"
+" nvr --remote-silent %f -c %l
