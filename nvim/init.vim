@@ -58,6 +58,8 @@ Plug 'morhetz/gruvbox'
 "Latex
 Plug 'lervag/vimtex'
 
+"Gleam - Programming language
+Plug 'gleam-lang/gleam.vim'
 
 "Ale
 Plug 'dense-analysis/ale'
@@ -89,6 +91,13 @@ syntax on
 " Enable auto save
 let g:auto_save = 1
 
+" Disable auto-save for rust files because we have rust fmt to lint on save
+" leading to some annoying issues
+augroup ft_rust
+  au!
+  au FileType rust let b:auto_save = 0
+augroup END
+
 " Rust autocompletion options
 set hidden
 
@@ -109,6 +118,7 @@ augroup Racer
      autocmd! FileType rust nmap gx <Plug>(rust-def-vertical)
      autocmd! FileType rust nmap <leader>gd <Plug>(rust-doc)<Paste>
 augroup END
+
 
 " Automatically format Rust code on saving
 let g:rustfmt_autosave = 1
