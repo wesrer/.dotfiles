@@ -32,9 +32,6 @@ Plug 'scrooloose/nerdtree'
 " VimTex - For Latex
 Plug 'lervag/vimtex'
 
-" Automatic commenting and uncommenting
-Plug 'scrooloose/nerdcommenter'
-
 " Snippet completion
 " FIXME: This does not work for some reason, some python error
 "Plug 'sirver/ultisnips'
@@ -44,6 +41,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Language Pack for vim
 Plug 'sheerun/vim-polyglot'
+
+"Golang
+Plug 'fatih/vim-go ' , { 'do': ':GoUpdateBinaries' }
 
 " Syntax highlighting for pest
 Plug 'pest-parser/pest.vim'
@@ -55,11 +55,9 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'morhetz/gruvbox'
 
-"Latex
-Plug 'lervag/vimtex'
-
 "Gleam - Programming language
 Plug 'gleam-lang/gleam.vim'
+
 
 "Ale
 Plug 'dense-analysis/ale'
@@ -98,6 +96,11 @@ augroup ft_rust
   au FileType rust let b:auto_save = 0
 augroup END
 
+" Ale linters
+let g:ale_linters = {
+	\ 'go': ['gopls'],
+	\}
+
 " Rust autocompletion options
 set hidden
 
@@ -135,6 +138,9 @@ map <s-tab> za
 
 " Set Ctrl + n as the trigger for NerdTree
 map <C-n> :NERDTreeToggle<CR>
+
+" Map Ctrl + T to open a new tab
+map <C-t> :tabedit<CR>
 
 "Airline-Theme
 let g:airline_theme='forest_night'
