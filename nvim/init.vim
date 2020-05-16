@@ -8,11 +8,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 
+" Rename Current file
+Plug 'danro/rename.vim'
+
 " Automatically insert brackets in pairs
 Plug 'jiangmiao/auto-pairs'
 
 " Automatically save buffers every time a change is made
 Plug '907th/vim-auto-save'
+
+" Markdown folding
+Plug 'masukomi/vim-markdown-folding'
 
 " Racer - Rust autocompletion tool
 " Rust Tools
@@ -58,7 +64,6 @@ Plug 'morhetz/gruvbox'
 "Gleam - Programming language
 Plug 'gleam-lang/gleam.vim'
 
-
 "Ale
 Plug 'dense-analysis/ale'
 
@@ -79,6 +84,12 @@ set mouse=a
 set autoindent
 set encoding=utf8
 
+" Enable auto save
+let g:auto_save = 1
+
+" ---------------------------------------------
+"                THEME SETTINGS
+" ---------------------------------------------
 " enable 24 bit true color
 set termguicolors
 
@@ -86,8 +97,13 @@ set termguicolors
 syntax enable
 syntax on
 
-" Enable auto save
-let g:auto_save = 1
+"Airline-Theme
+let g:airline_theme='forest_night'
+colorscheme gruvbox
+
+" Vim-Airline configs
+let g:airline#extensions#tabline#enabled = 1
+
 
 " Disable auto-save for rust files because we have rust fmt to lint on save
 " leading to some annoying issues
@@ -106,10 +122,6 @@ set hidden
 
 " Ale checking when you leave insert mode
 " let g:ale_lint_on_insert_leave
-
-" Vim-Airline configs
-let g:airline#extensions#tabline#enabled = 1
-
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
@@ -139,13 +151,12 @@ map <s-tab> za
 " Set Ctrl + n as the trigger for NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
+" ---------------------------------------------
+"               TAB OPTIONS 
+" ---------------------------------------------
+
 " Map Ctrl + T to open a new tab
 map <C-t> :tabedit<CR>
-
-"Airline-Theme
-let g:airline_theme='forest_night'
-colorscheme gruvbox
-
 
 " Vimtex options
 " install neovim-remote, and then enable it, since Vimtex needs to control
