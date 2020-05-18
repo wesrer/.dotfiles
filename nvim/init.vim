@@ -22,8 +22,10 @@ Plug 'masukomi/vim-markdown-folding'
 
 " Racer - Rust autocompletion tool
 " Rust Tools
-Plug 'racer-rust/vim-racer' 
+Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
+
+"Ruby tools
 
 " Emmet - emmet.io
 Plug 'mattn/emmet-vim'
@@ -78,14 +80,21 @@ let g:splitjoin_join_mapping = ''
 nmap sj :SplitjoinJoin<cr>
 nmap ss :SplitjoinSplit<cr>
 
+" ---------------------------------------------
+"                GENERAL SETTINGS
+" ---------------------------------------------
+
 " mouse support for terminal vim
 set mouse=a
 
-set autoindent
-set encoding=utf8
+" Set the toggle fold key to Shift+Tab for easy use
+map <s-tab> za
 
-" Enable auto save
-let g:auto_save = 1
+" Set fold method to `syntax` which is most common setting I use
+map <C-i> :set fdm=syntax<CR>
+
+" Set Ctrl + n as the trigger for NerdTree
+map <C-n> :NERDTreeToggle<CR>
 
 " ---------------------------------------------
 "                THEME SETTINGS
@@ -104,6 +113,22 @@ colorscheme gruvbox
 " Vim-Airline configs
 let g:airline#extensions#tabline#enabled = 1
 
+" ---------------------------------------------
+"                FILE SETTINGS
+" ---------------------------------------------
+
+set autoindent
+set encoding=utf8
+
+" Delete trailing whitespace on saving
+autocmd BufWritePre * %s/\s\+$//e
+
+" Enable auto save
+let g:auto_save = 1
+
+" ---------------------------------------------
+"                RUST SETTINGS
+" ---------------------------------------------
 
 " Disable auto-save for rust files because we have rust fmt to lint on save
 " leading to some annoying issues
@@ -145,14 +170,9 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Set the toggle fold key to Shift+Tab for easy use
-map <s-tab> za
-
-" Set Ctrl + n as the trigger for NerdTree
-map <C-n> :NERDTreeToggle<CR>
 
 " ---------------------------------------------
-"               TAB OPTIONS 
+"               TAB OPTIONS
 " ---------------------------------------------
 
 " Map Ctrl + T to open a new tab
