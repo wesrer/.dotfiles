@@ -11,6 +11,31 @@ Plug 'tpope/vim-commentary'
 " Rename Current file
 Plug 'danro/rename.vim'
 
+" --------------------------------------------------------
+"  		     RENAME.VIM USAGE
+" --------------------------------------------------------
+"
+" :rename[!] {newname}
+"
+" --------------------------------------------------------
+
+" Automatically insert bullets and numbers
+Plug 'dkarter/bullets.vim'
+
+" --------------------------------------------------------
+"  	DOCUMENTATION FOR BULLETS.VIM
+" --------------------------------------------------------
+"
+" -  Ctrl + t 	 -> Increase indent in Insert mode
+" - >>   	 -> Increase indent in Normal mode
+" - >		 -> Increase indent in Visual mode
+" - Ctrl + d 	 -> Decrease indent
+" - << 	 	 -> Decrease indent in Normal mode
+" - < 	 	 -> Decrease indent in Visual mode
+" - <leader> + x -> Toggle a checkbox in Normal mode (I have a custom leader)
+"
+" --------------------------------------------------------
+
 " Automatically insert brackets in pairs
 Plug 'jiangmiao/auto-pairs'
 
@@ -87,6 +112,9 @@ nmap ss :SplitjoinSplit<cr>
 " mouse support for terminal vim
 set mouse=a
 
+" Change the leader to the `-` key
+let mapleader="-"
+
 " Set the toggle fold key to Shift+Tab for easy use
 map <s-tab> za
 
@@ -95,6 +123,18 @@ map <C-i> :set fdm=syntax<CR>
 
 " Set Ctrl + n as the trigger for NerdTree
 map <C-n> :NERDTreeToggle<CR>
+
+" ---------------------------------------------
+"                PLUGIN SETTINGS
+" ---------------------------------------------
+
+" Bullets.vim
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
 
 " ---------------------------------------------
 "                THEME SETTINGS
