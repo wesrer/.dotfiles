@@ -23,7 +23,7 @@ Plug 'danro/rename.vim'
 Plug 'dkarter/bullets.vim'
 
 " --------------------------------------------------------
-"  	DOCUMENTATION FOR BULLETS.VIM
+"  		  BULLETS.VIM SHORTCUTS
 " --------------------------------------------------------
 "
 " -  Ctrl + t 	 -> Increase indent in Insert mode
@@ -96,15 +96,6 @@ Plug 'dense-analysis/ale'
 
 call plug#end()
 
-filetype plugin on
-
-set number relativenumber
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-
-nmap sj :SplitjoinJoin<cr>
-nmap ss :SplitjoinSplit<cr>
-
 " ---------------------------------------------
 "                GENERAL SETTINGS
 " ---------------------------------------------
@@ -112,8 +103,28 @@ nmap ss :SplitjoinSplit<cr>
 " mouse support for terminal vim
 set mouse=a
 
+" Map Ctrl + T to open a new tab
+map <C-t> :tabedit<CR>
+
+" Make line numbers relative on normal mode and
+" absolute in insert mode
+set number relativenumber
+
 " Change the leader to the `-` key
 let mapleader="-"
+
+filetype plugin indent on
+
+" HANDLING TABS \t
+"
+" show existing tab with 4 spaces width
+set tabstop=4
+
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+
+" On pressing tab, insert 4 spaces
+set expandtab
 
 " Set the toggle fold key to Shift+Tab for easy use
 map <s-tab> za
@@ -121,8 +132,12 @@ map <s-tab> za
 " Set fold method to `syntax` which is most common setting I use
 map <C-i> :set fdm=syntax<CR>
 
-" Set Ctrl + n as the trigger for NerdTree
-map <C-n> :NERDTreeToggle<CR>
+" Trying to break the habit of using arrow keys to navigate
+" on normal mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " ---------------------------------------------
 "                PLUGIN SETTINGS
@@ -135,6 +150,16 @@ let g:bullets_enabled_file_types = [
     \ 'gitcommit',
     \ 'scratch'
     \]
+
+" Set Ctrl + n as the trigger for NerdTree
+map <C-n> :NERDTreeToggle<CR>
+
+" TODO: write documentation
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+
+nmap sj :SplitjoinJoin<cr>
+nmap ss :SplitjoinSplit<cr>
 
 " ---------------------------------------------
 "                THEME SETTINGS
@@ -191,6 +216,8 @@ let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 
+" TODO: Write documentation for these
+
 augroup Racer
      autocmd!
      autocmd! FileType rust nmap gd <Plug>(rust-def)
@@ -203,21 +230,23 @@ augroup END
 " Automatically format Rust code on saving
 let g:rustfmt_autosave = 1
 
-" Trying to break the habit of using arrow keys to navigate
-" on normal mode
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+
+" ---------------------------------------------
+"                RUBY SETTINGS
+" ---------------------------------------------
+
+" Ruby specific bindings to override defaults
+augroup ft_ruby
+  au!
+  " Ruby recommended indentation is 2 spaces istead of 4
+  au FileType ruby set tabstop=2
+  au FileType ruby set shiftwidth=2
+augroup END
 
 
 " ---------------------------------------------
 "               TAB OPTIONS
 " ---------------------------------------------
-
-" Map Ctrl + T to open a new tab
-map <C-t> :tabedit<CR>
-
 " Vimtex options
 " install neovim-remote, and then enable it, since Vimtex needs to control
 " nvim process from within neovim
