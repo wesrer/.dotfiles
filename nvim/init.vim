@@ -27,11 +27,11 @@ Plug 'dkarter/bullets.vim'
 " --------------------------------------------------------
 "
 " -  Ctrl + t 	 -> Increase indent in Insert mode
-" - >>   	 -> Increase indent in Normal mode
-" - >		 -> Increase indent in Visual mode
+" - >>   	     -> Increase indent in Normal mode
+" - >		     -> Increase indent in Visual mode
 " - Ctrl + d 	 -> Decrease indent
-" - << 	 	 -> Decrease indent in Normal mode
-" - < 	 	 -> Decrease indent in Visual mode
+" - << 	 	     -> Decrease indent in Normal mode
+" - < 	 	     -> Decrease indent in Visual mode
 " - <leader> + x -> Toggle a checkbox in Normal mode (I have a custom leader)
 "
 " --------------------------------------------------------
@@ -51,6 +51,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 
 "Ruby tools
+
 
 " Emmet - emmet.io
 Plug 'mattn/emmet-vim'
@@ -106,6 +107,15 @@ set mouse=a
 " Map Ctrl + T to open a new tab
 map <C-t> :tabedit<CR>
 
+" Set fold method to `syntax` which is most common setting I use
+map <C-i> :set fdm=syntax<CR>
+
+" Set the toggle fold key to Shift+Tab for easy use
+map <s-tab> za
+
+" Remap splitting the screen with a fish terminal
+map <C-k> :vsp term://fish<CR>
+
 " Make line numbers relative on normal mode and
 " absolute in insert mode
 set number relativenumber
@@ -125,12 +135,6 @@ set shiftwidth=4
 
 " On pressing tab, insert 4 spaces
 set expandtab
-
-" Set the toggle fold key to Shift+Tab for easy use
-map <s-tab> za
-
-" Set fold method to `syntax` which is most common setting I use
-map <C-i> :set fdm=syntax<CR>
 
 " Trying to break the habit of using arrow keys to navigate
 " on normal mode
@@ -160,6 +164,14 @@ let g:splitjoin_join_mapping = ''
 
 nmap sj :SplitjoinJoin<cr>
 nmap ss :SplitjoinSplit<cr>
+
+" Have markdown folds be nested as the default
+autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+
+" Ale linters
+let g:ale_linters = {
+	\ 'go': ['gopls'],
+	\ 'ruby': ['rubocop']}
 
 " ---------------------------------------------
 "                THEME SETTINGS
@@ -202,10 +214,6 @@ augroup ft_rust
   au FileType rust let b:auto_save = 0
 augroup END
 
-" Ale linters
-let g:ale_linters = {
-	\ 'go': ['gopls'],
-	\}
 
 " Rust autocompletion options
 set hidden
@@ -230,7 +238,6 @@ augroup END
 " Automatically format Rust code on saving
 let g:rustfmt_autosave = 1
 
-
 " ---------------------------------------------
 "                RUBY SETTINGS
 " ---------------------------------------------
@@ -241,6 +248,11 @@ augroup ft_ruby
   " Ruby recommended indentation is 2 spaces istead of 4
   au FileType ruby set tabstop=2
   au FileType ruby set shiftwidth=2
+
+  " Only run linters named in ale_linters settings.
+  au FileType ruby let g:ale_linters_explicit = 1
+
+  " au FileType ruby au BufWritePre :!rubocop --safe-auto-correct<C-r>
 augroup END
 
 
