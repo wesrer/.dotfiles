@@ -8,23 +8,21 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 
+" --------------------------------------------------------
+"  		              RENAME.VIM
+" --------------------------------------------------------
 " Rename Current file
-Plug 'danro/rename.vim'
-
-" --------------------------------------------------------
-"  		     RENAME.VIM USAGE
-" --------------------------------------------------------
 "
 " :rename[!] {newname}
 "
+Plug 'danro/rename.vim'
 " --------------------------------------------------------
 
+
+" --------------------------------------------------------
+"           		  BULLETS.VIM
+" --------------------------------------------------------
 " Automatically insert bullets and numbers
-Plug 'dkarter/bullets.vim'
-
-" --------------------------------------------------------
-"  		  BULLETS.VIM SHORTCUTS
-" --------------------------------------------------------
 "
 " -  Ctrl + t 	 -> Increase indent in Insert mode
 " - >>   	     -> Increase indent in Normal mode
@@ -32,8 +30,10 @@ Plug 'dkarter/bullets.vim'
 " - Ctrl + d 	 -> Decrease indent
 " - << 	 	     -> Decrease indent in Normal mode
 " - < 	 	     -> Decrease indent in Visual mode
-" - <leader> + x -> Toggle a checkbox in Normal mode (I have a custom leader)
+" - <leader> + x -> Toggle a checkbox in Normal mode
+"                   (I have a custom leader: check below)
 "
+Plug 'dkarter/bullets.vim'
 " --------------------------------------------------------
 
 " Automatically insert brackets in pairs
@@ -62,6 +62,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Nerdtree - File System Explorer
 Plug 'scrooloose/nerdtree'
+
 
 " VimTex - For Latex
 Plug 'lervag/vimtex'
@@ -94,6 +95,17 @@ Plug 'gleam-lang/gleam.vim'
 
 "Ale
 Plug 'dense-analysis/ale'
+
+" ---------------------------------------------------
+"        ACTIVITY WATCHER VIM INTEGRATION
+" ---------------------------------------------------
+"
+" :AWStart  - start logging if not already logging
+" :AWStop   - stop logging if logging
+" :AWStatus - verify that the watcher is running
+
+Plug 'ActivityWatch/aw-watcher-vim'
+" ---------------------------------------------------
 
 call plug#end()
 
