@@ -116,6 +116,9 @@ call plug#end()
 " mouse support for terminal vim
 set mouse=a
 
+" Mark the 80th column
+set colorcolumn=80
+
 " Map Ctrl + T to open a new tab
 map <C-t> :tabedit<CR>
 
