@@ -89,6 +89,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " color schemes
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'morhetz/gruvbox'
+Plug 'tomasiser/vim-code-dark'
 
 "Gleam - Programming language
 Plug 'gleam-lang/gleam.vim'
@@ -118,6 +119,9 @@ set mouse=a
 
 " Mark the 80th column
 set colorcolumn=80
+
+" Press F2 to view leading whitespace as >--- and eol as $
+nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " Map Ctrl + T to open a new tab
 map <C-t> :tabedit<CR>
@@ -200,7 +204,15 @@ syntax on
 
 "Airline-Theme
 let g:airline_theme='forest_night'
+" let g:airline_theme = 'codedark'
+
+" gruvbox theme
 colorscheme gruvbox
+
+" VS-code dark theme
+" colorscheme codedark
+
+
 
 " Vim-Airline configs
 let g:airline#extensions#tabline#enabled = 1
