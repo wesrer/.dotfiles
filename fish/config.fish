@@ -12,4 +12,6 @@ alias dirsize="du -sh"
 # Run tokei to find out lines of code in the current dir
 alias codelines="tokei ."
 
+# Remove ssh keys currently active
+alias rmkeys="ssh-add -D"
 
