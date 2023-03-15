@@ -3,3 +3,13 @@ if status is-interactive
 end
 
 fish_ssh_agent
+
+# Custom aliases
+
+# Size of current dir in human readable format
+alias dirsize="du -sh"
+
+# Run tokei to find out lines of code in the current dir
+alias codelines="tokei ."
+
+
