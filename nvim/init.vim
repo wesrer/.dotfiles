@@ -7,6 +7,7 @@ call plug#begin('~/dotfiles/vim-plugins')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+Plug 'TovarishFin/vim-solidity'
 
 " --------------------------------------------------------
 "  		              RENAME.VIM
