@@ -6,10 +6,15 @@ fish_ssh_agent
 
 # Custom aliases
 
+# Reload config from the ln linked file in fish
+alias reloadconf="source ~/.config/fish/config.fish"
+
 # Size of current dir in human readable format
 alias dirsize="du -sh"
+
 # Run tokei to find out lines of code in the current dir
 alias codelines="tokei ."
+
 # Remove ssh keys currently active
 alias rmkeys="ssh-add -D"
 
@@ -28,6 +33,12 @@ alias assdev="ssh-add -D && ssh-add ~/.ssh/astriaTM"
 
 # Setup TM dev
 alias tmdev="ssh-add -D && ssh-add ~/.ssh/id_sojudrinkerTM"
+
+# Set dev under wes_xyz (giraffe)
+alias giraffedev="ssh-add -D && ssh-add ~/.ssh/wes_station"
+
+# Setup dev under my normal repository
+alias wesrerdev="ssh-add -D && ssh-add ~/.ssh/wesrer_TM"
 
 # Created by `pipx` on 2023-05-04 18:49:14
 set PATH $PATH /home/sojudrinker/.local/bin
