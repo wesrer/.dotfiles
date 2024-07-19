@@ -56,15 +56,18 @@ alias gcf="gaa && gca && gpf"
 alias tbull="task project:bullpen"
 alias tbulla="task add project:bullpen"
 alias tbullx="task project:bullpen complete"
+alias tbullm="task modify project:bullpen"
 alias thab="task project:habits"
 alias thaba="task project:habits add"
 alias thabx="task project:habits complete"
+alias thabm="task modify project:habits"
 alias tch="task project:chores"
 alias tcha="task project:chores add"
 alias tchx="task project:chores complete"
+alias tchm="task modify project:chores"
 
 # --------------------------------------------------------
-# Taskwarrior specific 
+# Timewarrior specific 
 # --------------------------------------------------------
 
 alias tis="timew summary :ids"
