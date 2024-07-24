@@ -18,6 +18,8 @@ alias cr="clear && reload"
 alias derek="ssh-add ~/.ssh/dereksione_gh"
 alias wes="ssh-add ~/.ssh/wesrer_gh"
 
+alias bulldev="derek && cd ~/Code/Bullpen"
+
 alias update="brew update & brew upgrade"
 
 # --------------------------------------------------------
@@ -51,20 +53,27 @@ alias gcf="gaa && gca && gpf"
 # Taskwarrior specific 
 # --------------------------------------------------------
 
-# Bullpen specific commands
+# Project specific commands
 
 alias tbull="task project:bullpen"
 alias tbulla="task add project:bullpen"
 alias tbullx="task project:bullpen complete"
 alias tbullm="task modify project:bullpen"
+
 alias thab="task project:habits"
 alias thaba="task project:habits add"
 alias thabx="task project:habits complete"
 alias thabm="task modify project:habits"
+
 alias tch="task project:chores"
 alias tcha="task project:chores add"
 alias tchx="task project:chores complete"
 alias tchm="task modify project:chores"
+
+# Priority
+
+alias tph="task prio:H"
+alias tphm="task modify prio:H"
 
 # --------------------------------------------------------
 # Timewarrior specific 
@@ -87,3 +96,6 @@ alias tis="timew summary :ids"
 
 
 
+
+# Created by `pipx` on 2024-07-22 19:43:58
+set PATH $PATH /Users/dereksione/.local/bin
