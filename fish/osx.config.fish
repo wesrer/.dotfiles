@@ -1,3 +1,6 @@
+# --------------------------------------------------------
+# Navigation management
+# --------------------------------------------------------
 alias el="eza -la"
 alias e="eza"
 alias c="clear"
@@ -31,6 +34,14 @@ alias carr="cargo run"
 alias cart="cargo test"
 
 # --------------------------------------------------------
+# Python specific commands
+# --------------------------------------------------------
+
+alias pyn="pip install"
+alias pyr="python3"
+alias pyenv="python3 -m venv"
+
+# --------------------------------------------------------
 # Git specific commands
 # --------------------------------------------------------
 
@@ -50,7 +61,7 @@ alias gl="git log"
 alias gcf="gaa && gca && gpf"
 
 # --------------------------------------------------------
-# Taskwarrior specific 
+# Taskwarrior specific
 # --------------------------------------------------------
 
 # Project specific commands
@@ -77,19 +88,10 @@ alias tph="task prio:H"
 alias tphm="task modify prio:H"
 
 # --------------------------------------------------------
-# Timewarrior specific 
+# Timewarrior specific
 # --------------------------------------------------------
 
 alias tis="timew summary :ids"
-
-
-
-
-
-
-
-
-
 
 
 
