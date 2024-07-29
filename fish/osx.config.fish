@@ -6,7 +6,7 @@ alias c="clear"
 # Dotfiles management
 # --------------------------------------------------------
 
-alias editconfig="vim ~/Code/.dotfiles/fish/osx.config.fish"
+alias editconfig="nvim ~/Code/.dotfiles/fish/osx.config.fish"
 alias cdconfig="cd ~/Code/.dotfiles/"
 alias reload="source ~/.config/fish/config.fish"
 alias cr="clear && reload"
@@ -59,6 +59,7 @@ alias tbull="task project:bullpen"
 alias tbulla="task add project:bullpen"
 alias tbullx="task project:bullpen complete"
 alias tbullm="task modify project:bullpen"
+alias tbh="tbull prio:H"
 
 alias thab="task project:habits"
 alias thaba="task project:habits add"
