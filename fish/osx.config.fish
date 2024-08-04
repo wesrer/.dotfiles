@@ -14,6 +14,8 @@ alias cdconfig="cd ~/Code/.dotfiles/"
 alias reload="source ~/.config/fish/config.fish"
 alias cr="clear && reload"
 
+alias cdwiki="cd ~/Documents/sadboiwiki"
+
 # --------------------------------------------------------
 # Personal dev setup
 # --------------------------------------------------------
@@ -64,6 +66,8 @@ alias gcf="gaa && gca && gpf"
 # Taskwarrior specific
 # --------------------------------------------------------
 
+alias t="task"
+
 # Project specific commands
 
 alias tbull="task project:bullpen"
@@ -93,10 +97,18 @@ alias tphm="task modify prio:H"
 
 alias tis="timew summary :ids"
 
+# --------------------------------------------------------
+# Postgresql specific commands
+# --------------------------------------------------------
 
+alias pgstart="brew services start postgresql@16"
+alias pgstop="brew services stop postgresql@16"
+alias ldb="brew services"
 
-
-
+# local database for bullpen development
+alias ldbull="pgcli -d test_data_pipeline"
+# Remote staging database for bullpen development
+# alias rdbull="pgcli -h "
 
 
 
