@@ -9,8 +9,12 @@ alias c="clear"
 # Dotfiles management
 # --------------------------------------------------------
 
-alias editconfig="nvim ~/Code/.dotfiles/fish/osx.config.fish"
+alias editfishconfig="nvim ~/Code/.dotfiles/fish/osx.config.fish"
+alias editviconfig="nvim ~/Code/.dotfiles/nvim/bullpen.init.vim"
+
 alias cdconfig="cd ~/Code/.dotfiles/"
+alias cdbull="cd ~/Code/Bullpen"
+alias cdrsbull="cd ~/Code/Bullpen/data-pipeline"
 alias reload="source ~/.config/fish/config.fish"
 alias cr="clear && reload"
 
@@ -34,6 +38,8 @@ alias update="brew update & brew upgrade"
 alias carb="cargo build"
 alias carr="cargo run"
 alias cart="cargo test"
+alias cartt="cart --test"
+alias card="cargo doc --document-private-items"
 
 # --------------------------------------------------------
 # Python specific commands

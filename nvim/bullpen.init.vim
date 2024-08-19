@@ -28,6 +28,9 @@ Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Syntax highlighting for justfiles
+Plug 'NoahTheDuke/vim-just'
+
 call plug#end()
 " ---------------------------------------------
 "                GENERAL SETTINGS
@@ -36,13 +39,16 @@ call plug#end()
 filetype plugin indent on
 
 set number
+set relativenumber
 
 " Remap vertically splitting the screen with a fish terminal
+" Ctrl + k
 map <C-k> :vsp term://fish<CR>
 " Create the new window to the right of the current window
 set splitright
 "
 " Remap horizontally splitting the screen with a fish terminal
+" Ctrl + j
 map <C-j> :sp term://fish<CR>
 " Create the new window at the bottom of the current window
 set splitbelow
@@ -56,11 +62,19 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-" Map Ctrl + T to open a new tab
+" Map Ctrl + t to open a new tab
 map <C-t> :tabedit<CR>
 
 " Set fold method to `syntax` which is most common setting I use
+" Ctrl + i
 map <C-i> :set fdm=syntax<CR>
+
+" Copy and paste to and from clipboard
+" Ctrl + c
+nnoremap <C-c> "+y
+"
+" Ctrl + p
+map <C-p> "+p
 
 " ---------------------------------------------
 "                APPEARANCE SETTINGS
@@ -78,8 +92,10 @@ colorscheme gruvbox
 "
 " Set Ctrl + n as the trigger for NerdTree
 map <C-n> :NERDTreeToggle<CR>
+" Make nerdtree show hidden file, like .env
+let NERDTreeShowHidden=1
 " Use Enter to open the selected file in a new tab
-let NERDTreeMapOpenInTab='<TAB>'
+" let NERDTreeMapOpenInTab='<TAB>'
 
 " enable AutoSave on Vim startup
 let g:auto_save = 1
@@ -88,6 +104,50 @@ let g:auto_save_silent = 1
 
 " Vim Repeat (copied from the repo github)
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+" ---------------------------------------------
+"                COC SETTINGS
+" ---------------------------------------------
+
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+" Use <c-space> to trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 " ---------------------------------------------
 "                BEGINNER SETTINGS
