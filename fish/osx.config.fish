@@ -26,6 +26,7 @@ alias cdwiki="cd ~/Documents/sadboiwiki"
 
 alias derek="ssh-add ~/.ssh/dereksione_gh"
 alias wes="ssh-add ~/.ssh/wesrer_gh"
+alias timestamp="date +%s"
 
 alias bulldev="derek && cd ~/Code/Bullpen"
 
@@ -62,7 +63,8 @@ alias gp="git push"
 alias gpf="git push -f"
 alias gpl="git pull"
 alias gfa="git fetch --all"
-alias gl="git log"
+alias gl="git log":L:w
+alias gsubup="git submodule update --recursive --remote"
 
 # Combinations
 
